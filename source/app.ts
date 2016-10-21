@@ -1,66 +1,13 @@
 namespace Primes {
 
-    export function find(l: number): number[] {
+    export function find(n: number): number[] {
         let result: number[] = [];
-        let value = 0;
-
-        while(value < l-3){
-            result.push(value = getPrime(value));
+        let m: number = 0;
+        while (m < n - 3) {
+            result.push(m = getPrime(m));
         }
-
-        // l.forEach((e, x) => {
-        //     // if (isPrime(e)) {
-        //     //     result.push(e);
-        //     // }
-        //     result.push(value = getPrime(value));
-        // });
         return result;
     }
-
-    // export function isPrime(n: number): boolean {
-    //     if (n % 1 || n < 2)
-    //         return false;
-    //     for (let i: number = 2; i <= Math.sqrt(n); i++) {
-    //         if (n % i === 0) {
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // }
-
-    //awesome regex! https://iluxonchik.github.io/regular-expression-check-if-number-is-prime/
-    // export function isPrimeNumber(n: number): boolean {
-    //     var re = /^.?$|^(..+?)\1+$/;
-    //     return !re.test('1'.repeat(n));
-    // }
-
-    // export function* generatePrimes(): Iterable<number> {
-    //     let n: number = 0;
-    //     while (true) {
-    //         if (isPrime(n)) {
-    //             yield n;
-    //         }
-    //         n++;
-    //     }
-    // }
-
-    // export function get(n: number): number[] {
-    //     console.log("First ", n, " primes :");
-    //     let result: number[] = [];
-    //     let prime: any = generatePrimes();
-    //     let i: number = 0;
-    //     while (i < n) {
-    //         result.push(prime.next().value);
-    //         i++;
-    //     }
-    //     return result;
-
-    // }
-
-    // export function findPrimes(l: number[]): number[] {
-    //     return [];
-    // };
-
 
     export function getPrime(n: number): number {
         var i: number = 0, root: number = 1;
@@ -76,18 +23,38 @@ namespace Primes {
             return n;
         }
         return n === 2 ? 3 : 2;
-    };
-    export function getPrimes(n: number): number[] {
-        var value: number, result: number[] = [];
+    }
+
+    export function getList(n: number): number[] {
+        var m: number, result: number[] = [];
         for (let i: number = 0; i < n; i++) {
-            result.push(value = getPrime(value));
+            result.push(m = getPrime(m));
         }
         return result;
     }
-    
+
+    export function getFactors(n: number): {} {
+
+        let result: number[] = [];
+        let m: number = 2;
+
+        while (m * m <= n) {
+            while (n % m === 0) {
+                result.push(m);
+                n = Math.floor(n / m);
+            }
+            m++;
+        }
+        if (n > 1) {
+            result.push(n)
+        }
+        let timesN: {} = {};
+        result.forEach((i) => { timesN[i] = (timesN[i] || 0) + 1; });
+        return timesN;
+    }
+
 }
 
-console.log(Primes.find(100));
-console.log(Primes.getPrimes(100));
-
-
+console.log(Primes.find(10));
+console.log(Primes.getList(10));
+console.log(Primes.getFactors(1000));
