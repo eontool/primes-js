@@ -1,0 +1,12 @@
+{
+  "name": "primesjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/app.js",
+  "scripts": {
+    "browserify": "browserify build/app.js -o build/bundle.js"
+  },
+  "author": "eontool",
+  "dependencies": {
+  }
+}
