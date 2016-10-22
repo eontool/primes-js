@@ -53,8 +53,15 @@ namespace Primes {
         return timesN;
     }
 
+    //Amazing regex to check if number is prime https://iluxonchik.github.io/regular-expression-check-if-number-is-prime/
+    export function isPrime(n:number):boolean {
+        var re:any = /^.?$|^(..+?)\1+$/;
+        return !re.test('1'.repeat(n));
+    }
+
+
 }
 
-console.log(Primes.find(10));
-console.log(Primes.getList(10));
+console.log(Primes.find(10000));
+console.log(Primes.getList(1000));
 console.log(Primes.getFactors(1000));

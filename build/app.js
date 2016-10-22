@@ -51,7 +51,13 @@ var Primes;
         return timesN;
     }
     Primes.getFactors = getFactors;
+    //Amazing regex to check if number is prime https://iluxonchik.github.io/regular-expression-check-if-number-is-prime/
+    function isPrime(n) {
+        var re = /^.?$|^(..+?)\1+$/;
+        return !re.test('1'.repeat(n));
+    }
+    Primes.isPrime = isPrime;
 })(Primes || (Primes = {}));
-console.log(Primes.find(10));
-console.log(Primes.getList(10));
+console.log(Primes.find(10000));
+console.log(Primes.getList(1000));
 console.log(Primes.getFactors(1000));
